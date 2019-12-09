@@ -102,7 +102,6 @@ string = """60566
 75124"""
 
 mass_values = [int(s) for s in string.replace("\n", ",").split(',')]
-print(mass_values)
 
 
 def fuelRequired(mass: int) -> int:
@@ -111,6 +110,23 @@ def fuelRequired(mass: int) -> int:
 
 fuel_required = 0
 for value in mass_values:
-    fuel_required += fuelRequired(value)
-
-print(fuel_required)
+    fReq = fuelRequired(value)
+    fuel_required += fReq
+    addFuel = fReq
+    print(f"Mass {value} needs {fReq} fuel.")
+    print(f"Math: {fuel_required - fReq} + {fReq} = {fuel_required}")
+    additionalFuel = 0
+    while True:
+        print(f"Fuel {addFuel} needs {fuelRequired(addFuel)} more fuel.")
+        addFuel = fuelRequired(addFuel) if fuelRequired(addFuel) > 0 else 0
+        # print("STOP!")
+        if addFuel > 0:
+            print(f"FIRST__Math: {additionalFuel} + {fuel_required} = {additionalFuel + fuel_required}")
+            additionalFuel += addFuel
+            print(f"TEST__Math: {additionalFuel} + {fuel_required} = {additionalFuel + fuel_required}")
+        else:
+            print(f"Math: {additionalFuel} + {fuel_required} = {additionalFuel + fuel_required}")
+            print("\n\r")
+            break
+    fuel_required += additionalFuel
+print(f"We need {fuel_required} fuel!")
