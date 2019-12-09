@@ -1,3 +1,4 @@
+#! python3
 import matplotlib.pyplot as plt
 
 
@@ -69,9 +70,7 @@ line_two_path = "L1003,U936,R846,U549,L824,D684,R944,U902,R177,U875,L425,U631,L3
                 "L422,D793,R684,D175,L347,D466,L219,D140,L803,U433,R96"
 line_two_path = line_two_path.split(",")
 
-wire = [0, 0]
-wire[0] = Wire()
-wire[1] = Wire()
+wire = [Wire(), Wire()]
 central_port = Wire()
 wire[0].PlotPoints(line_one_path)  # converts list commands to plotted points
 wire[1].PlotPoints(line_two_path)  # converts list commands to plotted points
